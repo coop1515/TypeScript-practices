@@ -83,13 +83,123 @@ void > unknown > never 순으로 많이 사용함.
 https://www.typescriptlang.org/docs/handbook/2/functions.html#unknown
 
 ## Chapter2 - Function
-1.
- 
+1. call signature : 함수에 대한 설명(일반적으로 함수에 마우스커서를 올리면 나오는 설명)
+```
 
+const add_ArrowFunction = (a:number, b:number) => a+b : 일반적인 매개변수의 타입지정
 
+type Add = (a:number, b:number) => number;
+const add_ArrowFunction :Add = (a,b) => a+b 
+```
+2. OverLoading : 같은 이름의 함수를 재사용 하는 방법 => 매개변수에 차이를 줌.
+```
+type Add2 = {
+    (a: number, b: number) : number
+    (a: number, b: string) : number
+}
 
-## Chapter
-## Chapter
-## Chapter
-## Chapter
-## Chapter
+const add_OverLoading2: Add2 = (a,b) => {
+    if(typeof b === "string") return a
+    return a + b
+}
+
+type Add3 = { 
+    (a:number, b:number) : number;
+    (a:number, b:number, c:number) : number;
+}
+
+const add_OverLoading3 : Add3 = (a,b,c?:number) => { 
+    if(c) return a + b + c 
+    return a + b
+}
+```
+3. PolyMorphos : Poly(다양한) + Morphos(구조, 건축물) => 다형성
+```
+type SuperPrint = {
+    (arr: number[]):void
+    (arr:boolean[]):void
+    (arr:string[]):void
+    (arr:(number|boolean)[]):void
+}
+
+const superPrint: SuperPrint = (arr) => {
+    arr.forEach(i => console.log(i))
+}
+superPrint([1,2])
+superPrint([true,false])
+superPrint(["a","b","c"])
+superPrint([1,2,true,false])
+```
+4. any와 generic의 차이
+```
+any와 generic은 둘 다 타입을 내가 선언하지 않아서 자유롭게 사용할 수 있지만
+generic은 타입을 설정해주기 때문에 코드상의 문제가 생기면 error를 내줌.
+any는 타입 설정이 없기때문에 코드상의 문제를 잡아주지 않음.
+```
+5. PloyMorphos - generic : 자동으로 타입을 정해준다.
+```
+type SuperPrint2 = {
+    <Potato>(arr: Potato[]):Potato 
+}
+
+const superPrint2: SuperPrint2 = (arr) => {
+    return arr[0]
+}
+
+const print1 = superPrint2([1,2])
+const print5 =superPrint2([1,2,true,false, "ㅎㅎㅎㅎ"])
+
+여러개의 generic 사용
+
+type SuperPrint3 = {
+    <Potato, T>(arr: Potato[], b:T):Potato 
+}
+
+const superPrint3: SuperPrint3 = (arr) => {
+    return arr[0]
+}
+
+const print11 = superPrint3([1,2]," ")
+```
+
+6. PolyMorphos - generic2 : 함수형태로 사용하는 generic
+```
+function superPrint4<V>(a:V[]) {
+    return a[0]
+}
+
+const print12 = superPrint4<number>([1,2]) //함수이름<type>은 type을 명시해주는것.
+const print22 = superPrint4([true,false])
+```
+
+7. PolyMorphos - generic3 : type에 사용하는 generic
+```
+type Player<E> = {
+    name:string
+    extraInfo:E
+}
+
+const nico: Player<{favFood:string}> = {
+    name:"nico",
+    extraInfo: {
+        favFood:"kimchi"
+    }
+} 
+
+type NicoPlayer = Player<{ favFood:string}>
+
+const nico2: NicoPlayer = {
+    name:"nico",
+    extraInfo: {
+        favFood:"kimchi"
+    }
+}
+
+type NicoExtra = {
+    favFodd:string
+}
+
+type NicoPlayer2 = Player<NicoExtra>
+```
+## Chapter3
+## Chapter4
