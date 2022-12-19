@@ -39,7 +39,14 @@ class Dict {
             this.words[word.term] = word.def
         }
     }
+    static hello(){
+        return "hello"
+    }
 }
+
+// static이 없으면 에러남.
+Dict.hello()
+
 
 class Word {
     constructor(
