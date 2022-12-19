@@ -35,6 +35,7 @@ abstract class User {
 }
 
 class Player2 extends User{
+    // 상속받은 추상메소드 구현. -> 무조건 해줘야함.
     getNickName(): void {
         this.lastName // protected는 상속받으면 사용 가능.
     }
