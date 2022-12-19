@@ -136,3 +136,15 @@ type NicoExtra = {
 
 type NicoPlayer2 = Player<NicoExtra>
 
+const lynn: Player<null> = {
+    name: "lynn",
+    extraInfo:null
+}
+
+type a = Array<number>
+
+let a:a = [1,2,3,4]
+
+function printAllNumbers(arr: Array<number>){
+    
+}
