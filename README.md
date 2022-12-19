@@ -201,5 +201,5 @@ type NicoExtra = {
 
 type NicoPlayer2 = Player<NicoExtra>
 ```
-## Chapter3
+## Chapter3 - CLASSES AND INTERFACES
 ## Chapter4
