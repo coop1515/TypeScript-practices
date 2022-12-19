@@ -202,7 +202,7 @@ type NicoExtra = {
 type NicoPlayer2 = Player<NicoExtra>
 ```
 ## Chapter3 - CLASSES AND INTERFACES
-1. class : 접근제어자
+1. class : 접근제어자 <br/>
 접근제어자는 private, protected, public이 있는데
 private는 해당 클래스에서만 사용 가능하고,
 protecte는 해당 클래스와 상속받은 클래스에서 사용 가능하고,
