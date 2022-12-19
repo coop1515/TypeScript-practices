@@ -83,7 +83,7 @@ void > unknown > never 순으로 많이 사용함.
 https://www.typescriptlang.org/docs/handbook/2/functions.html#unknown
 
 ## Chapter2 - Function
-1. call signature : 함수에 대한 설명(일반적으로 함수에 마우스커서를 올리면 나오는 설명)
+1. call signature : 함수에 대한 설명(일반적으로 함수명에 마우스커서를 올리면 나오는 설명)
 ```
 
 const add_ArrowFunction = (a:number, b:number) => a+b : 일반적인 매개변수의 타입지정
