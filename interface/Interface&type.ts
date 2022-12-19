@@ -69,3 +69,47 @@ const me2: Player3 = {
     health:"하하"
 }
 
+// 복습
+type PlayerA = {
+    name:string
+}
+
+// type이 상속받는 방법
+type PlayerAA  = PlayerA & {
+    lastName:string
+}
+const playerA: PlayerAA = {
+    name:"Hello",
+    lastName:"GoodBye"
+}
+
+interface PlayerB {
+    name:string
+}
+
+// interface PlayerB {
+//     lastName:string
+// }
+// 인터페이스가 상속받는 방법
+interface PlayerBB extends PlayerB{
+    firstName:string
+}
+
+const playerB: PlayerBB = {
+    name:"Hello",
+    // lastName:"Goodmorning",
+    firstName:"ByeBye"
+}
+
+// PlayerA(type) 을 PlayerB(interface)로 변경해도 에러가 안남.
+// 그만큼 타입과 인터페이스는 유사하다.
+class User4 implements PlayerA {
+    constructor(
+        public name:string
+    ){
+
+    }
+}
+
+// 결론 오브젝트의 모양을 알려주기 위해서는 인터페이스를 쓰고
+// 그 외의 상황은 타입을 사용하는게 좋다.

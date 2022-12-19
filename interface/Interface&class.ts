@@ -1,5 +1,4 @@
 // 추상 클래스는 JS파일로 변환될때 일반 클래스로 바뀜.
-import HUD from './../../../Project_KK/src/scenes/SceneBattleHUD';
 abstract class User2 {
     constructor(
         protected firstName:string,
@@ -58,7 +57,7 @@ function makeUser(user:User3){
         firstName2:"me",
         lastName2:"em",
         fullName2: () => "xx",
-        sayHi2(name) {
+        sayHi2(name:string) {
             return "student"
         },
     }
