@@ -439,5 +439,66 @@ booleanStroage.get("zzz")
 booleanStroage.set("hello",true)
 ```
 
-## Chapter4
+## Chapter4 - Block Chain
 1. Type Script Project setting
+```
+1) json (npm)
+ts-node -> ts파일 실행할 수 있도록 해주는 것
+nodemon -> 파일이 수정되면 자동으로 파일을 다시 실행해줌.
+
+2) tsconfig.json
+{
+    "include": ["src"], // tsconfig를 적용시킬 곳을 정하는 설정.
+    "compilerOptions": { 
+        "outDir": "build", // (Ts파일에서) 변환된 JS파일을 저장할 폴더
+        "target": "es6", // 어떤 문법을 사용할 것인지(변환)
+        "lib": ["ES6", "DOM"], // 어떤 환경에서 실행할 것인지.
+        "strict": true, // TS파일이 오류 잡아주는 설정
+        "allowJs": true, // TS파일안에 JS파일을 허락해주는 설정
+    }
+}
+
+3) module 만들기.
+파일명은 원하는 파일명.d.ts 로 작성하면 됨. ex) example.d.ts
+
+interface Config{
+    url: string;
+}
+
+declare module "myPackage"{
+    function init(config:Config):boolean;
+    function exit(code:number):number;
+}
+이런식으로 선언만 해놓으면 원하느 파일에서 사용하면 됨.
+ex) import {init, exit} from "myPackage";
+
+```
+2. JSDoc : js파일을 TS처럼 사용 가능하게 해줌.
+```
+기본 적인 사용법은
+/** (source) */
+
+// 아래의 명령어로 js파일내에서 tscheck를 가능하게함. 
+// @ts-check
+
+/** JSDoc
+ * Initializes the project
+ * @param {object} config 
+ * @param {boolean} config.debug
+ * @param {string} config.url
+ * @returns boolean
+ */
+export function init(config) {
+    return true;
+}
+
+/**
+ * Exits the program
+ * @param {number} code 
+ * @returns number
+ */
+export function exit(code) {
+    return code + 1;
+}
+
+```
