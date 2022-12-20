@@ -258,10 +258,183 @@ nico2.getFullName2() // 메소드도 접근제어자가 가능하다.
 
 3. simple dictionary
 ```
-classes => Dict.js
+file source : Classes and Interface/classes/Dict.js
 
 static method
 ```
 
-4. 
+4. Interface&type
+```
+// 타입에 특정 값만 들어오게 하는 방법.
+type Team = "red" | "blue" | "yellow"
+type Health = 5 | 10 | 15
+
+타입의 기본 형태
+//type Player2 = {
+//     nickname: string,
+//     team : Team,
+//     health: Health
+//}
+
+interface : 오로지 object의 모양을 정해주기 위해 사용함.
+type과 interface의 차이는 type은 다양하게 사용하는데 반해
+interface는 그저 object의 모양을 정해주는 목적밖에 없음.
+
+interface의 기본 형태
+interface Player2  {
+    nickname: string,
+    team : Team,
+    health: Health
+}
+
+const me: Player2 = {
+    nickname: "나다",
+    // team과 health는 특정 값을 넣지않으면 에러가 남.
+    team: "red",
+    health: 10
+}
+
+interface User {
+    name:string
+}
+
+interface Player3 extends User{
+}
+
+// interface를 type으로 변환.
+// type User = {
+//     name: string
+// }
+
+// type Player3 = User & {
+// }
+
+interface User {
+    lastName: string
+}
+
+interface User {
+    health: string
+}
+
+const me2: Player3 = {
+    // 상속받아서 name을 사용할 수 있음.
+    name:"me",
+
+    // 같은이름을 가진 인터페이스가 있으면 TS가 알아서 합쳐줌.
+    lastName:"seok",
+    health:"하하"
+}
+```
+
+5. Interface&class
+```
+// 추상 클래스는 JS파일로 변환될때 일반 클래스로 바뀜.
+abstract class User2 {
+    constructor(
+        protected firstName:string,
+        protected lastName:string
+    ){}
+    abstract sayHi(name:string):string
+    abstract fullName():string
+}
+
+// new User2() //추상클래스는 인스턴스를 직접 만드는것을 허용하지 않는다.
+
+class Player4 extends User2{
+
+    fullName(): string {
+        // firstName과 lastName을 private으로 하면 사용 불가능.
+        return `${this.firstName} ${this.lastName}`
+    }
+
+    sayHi(name: string): string {
+        return `Hello ${name} My name is ${this.fullName()}`
+    }
+}
+
+// 인터페이스는 JS파일로 변환할 때 사라져버려서 코드가 보여지지 않음.
+// 인터페이스를 상속(구현)받을때 private과 protected를 못쓴다는 문제점이 있음.
+
+interface User3 {
+    firstName2:string,
+    lastName2:string,
+    sayHi2(name:string):string,
+    fullName2():string
+}
+
+interface Human {
+    health:number
+}
+class Player5 implements User3, Human{
+    constructor(
+        public firstName2:string,
+        public lastName2:string,
+        public health:number
+    ){}
+    fullName2(): string {
+        // firstName과 lastName을 private으로 하면 사용 불가능.
+        return `${this.firstName2} ${this.lastName2}`
+    }
+
+    sayHi2(name: string): string {
+        return `Hello ${name} My name is ${this.fullName2()}`
+    }
+}
+
+function makeUser(user:User3){
+    // return "Hi"
+    return {
+        firstName2:"me",
+        lastName2:"em",
+        fullName2: () => "xx",
+        sayHi2(name:string) {
+            return "student"
+        },
+    }
+}
+
+makeUser({
+    firstName2:"me",
+    lastName2:"em",
+    fullName2: () => "xx",
+    sayHi2(name) {
+        return "student"
+    },
+})
+```
+6. PolyMorphism(interface,class,generic) 
+```
+PolyMorphism & generic & interface & class을 모두 사용한 방법
+
+interface SStorage<T>{
+    [key:string] : T
+}
+class LocalStorage<T> {
+    private storage: SStorage<T> = {}
+    set(key:string, value:T){
+        this.storage[key] = value
+    }
+    remove(key:string){
+        delete this.storage[key]
+    }
+    get(key:string){
+        return this.storage[key]
+    }
+    clear(){
+        this.storage = {}
+    }
+}
+
+const stringStorage = new LocalStorage<string>()
+
+stringStorage.get("ㅋㅋ")
+stringStorage.set("hello","true")
+
+const booleanStroage = new LocalStorage<boolean>();
+
+booleanStroage.get("zzz")
+booleanStroage.set("hello",true)
+```
+
 ## Chapter4
