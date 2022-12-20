@@ -16,6 +16,7 @@ class Block implements BlockShape {
     ) {
         this.hash= Block.calculateHash(prevHash, height, data);
     }
+    // crypto로 해시함수 만들어서 암호화하는 메소드.
     static calculateHash(prevHash:string, 
                             height:number, 
                             data: string)
@@ -30,14 +31,17 @@ class BlockChain {
     constructor(){
         this.blocks = [];
     }
+    // prevHash 만드는 메소드
     private getPrevHash(){
         if(this.blocks.length === 0) return ""
         return this.blocks[this.blocks.length - 1].hash;
     }
+    // 블록 추가 메소드
     public addBlock(data:string){
         const newBlock = new Block(this.getPrevHash(), this.blocks.length + 1, data);
         this.blocks.push(newBlock);
     }
+    // 생성된 블록 확인하는 메소드
     public getBlocks() {
         // return this.blocks // 보안의 위협때문에 아래처럼 작성해야 함.
         return [...this.blocks]
