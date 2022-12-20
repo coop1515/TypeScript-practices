@@ -1,7 +1,9 @@
 # TypeScript-practices
 ```
 resource : https://nomadcoders.co/typescript-for-beginners/lobby
+
 convert TypeScript to JavaScript in site : TypeScript playground
+url : https://www.typescriptlang.org/play
 ```
 
 ```
@@ -513,10 +515,5 @@ export function exit(code) {
 Please check blockchain/src/index.ts
 ```
 
-
-
-
-
-
-
-참고자료 : The TypeScript Handbook
+참고자료(사이트) : The TypeScript Handbook
+url : https://www.typescriptlang.org/docs/handbook/intro.html
