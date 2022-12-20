@@ -1,5 +1,7 @@
 # TypeScript-practices
-
+```
+resource : https://nomadcoders.co/typescript-for-beginners/lobby
+```
 
 ```
 타입스크립트를 사용하는 이유
@@ -438,3 +440,4 @@ booleanStroage.set("hello",true)
 ```
 
 ## Chapter4
+1. Type Script Project setting
