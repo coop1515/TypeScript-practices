@@ -3,8 +3,10 @@
     "compilerOptions": { 
         "outDir": "build", // (Ts파일에서) 변환된 JS파일을 저장할 폴더
         "target": "es6", // 어떤 문법을 사용할 것인지(변환)
-        "lib": ["ES6", "DOM"], // 어떤 환경에서 실행할 것인지.
+        "lib": ["ES6"/*,"DOM"*/],  // 어떤 환경에서 실행할 것인지.
         "strict": true, // TS파일이 오류 잡아주는 설정
-        "allowJs": true, // TS파일안에 JS파일을 허락해주는 설정
+        // "allowJs": true, // TS파일안에 JS파일을 허락해주는 설정
+        "esModuleInterop": true, //crypto 모듈같은 다른 모듈을 허락해주는 설정
+        "module": "CommonJS" // browerweb은 umd
     }
 }

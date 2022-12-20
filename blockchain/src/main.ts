@@ -12,7 +12,7 @@
 
 // localStorage.clear
 
-import { init, exit } from './myPackage';
+// import { init, exit } from './myPackage';
 
 // init()
 // exit()

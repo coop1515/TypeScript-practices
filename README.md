@@ -1,6 +1,7 @@
 # TypeScript-practices
 ```
 resource : https://nomadcoders.co/typescript-for-beginners/lobby
+convert TypeScript to JavaScript in site : TypeScript playground
 ```
 
 ```
@@ -445,6 +446,7 @@ booleanStroage.set("hello",true)
 1) json (npm)
 ts-node -> ts파일 실행할 수 있도록 해주는 것
 nodemon -> 파일이 수정되면 자동으로 파일을 다시 실행해줌.
+참고 깃허브(npm module이 모여있는 사이트) : https://github.com/DefinitelyTyped/DefinitelyTyped
 
 2) tsconfig.json
 {
@@ -469,14 +471,18 @@ declare module "myPackage"{
     function init(config:Config):boolean;
     function exit(code:number):number;
 }
-이런식으로 선언만 해놓으면 원하느 파일에서 사용하면 됨.
+이런식으로 선언만 해놓으면 원하는 파일에서 사용하면 됨.
 ex) import {init, exit} from "myPackage";
 
 ```
-2. JSDoc : js파일을 TS처럼 사용 가능하게 해줌.
+2. JSDoc : js파일을 TS와 같이 사용 가능하게 해줌.
 ```
 기본 적인 사용법은
-/** (source) */
+/**
+ * 
+ * @param {*} bye 
+ * @returns 
+ */
 
 // 아래의 명령어로 js파일내에서 tscheck를 가능하게함. 
 // @ts-check
@@ -502,3 +508,15 @@ export function exit(code) {
 }
 
 ```
+3. blockchain
+```
+Please check blockchain/src/index.ts
+```
+
+
+
+
+
+
+
+참고자료 : The TypeScript Handbook
