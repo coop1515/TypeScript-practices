@@ -87,6 +87,47 @@ throw new Error(msg);
 void > unknown > never 순으로 많이 사용함.
 https://www.typescriptlang.org/docs/handbook/2/functions.html#unknown
 
+9. Utility types : interface or type을 타입으로 사용하는 경우 *T는 interface와 type의 이름, K는 Key값.
+```
+keyof T: property 원하는 대로 구현 ex) property가 3개면 1개든 2개든 3개든 마음대로 구현하면 됨.
+
+Partial<T> : property 부분 구현 (없는 property를 구현하면 error)
+
+Required<T> : property 모두 구현
+
+Readonly<T> : property 의 값을 변경 불가능.
+
+Record<K,T> : Key값과 Type값
+ex)
+type Grade = "1"|"2"|"3"|"4"
+type Score = "A"|"B"|"C"|"D"|"E";
+
+const score: Record<Grade, Score> = {
+    1: "A",
+    2: "E",
+    3: "C",
+    4: "D",
+    // 5: "B" 이 부분은 error 키값이 5가 없음.
+    // 4: "F" 이 부분도 error Type에 F가 없음.
+}
+
+Pick<T,K> : Type안에 존재하는 property중 Key에 적은것만 구현 한다.
+
+Omit<T,K> : Type안에 존재하는 property중 Key에 적은것을 제외하고 구현한다.
+
+Exclude<T1, T2> : T1에 존재하는 type중 T2에 적은 type을 제외한다.
+ex)
+type T1 = string | number | boolean;
+type T2 = Exclude<T1, number> 
+T2의 타입은 string | boolean
+
+NonNullable<T> : null 과 undefined를 제외한 type을 반환
+ex)
+type T1 = string | null | undefined | void
+type T2 = NonNullabel<T1>
+T2의 타입은 string | void 가 됨.
+```
+
 ## Chapter2 - Function
 1. call signature : 함수에 대한 설명(일반적으로 함수명에 마우스커서를 올리면 나오는 설명)
 ```
