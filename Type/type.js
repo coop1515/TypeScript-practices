@@ -5,5 +5,6 @@ function hi(a,b){
     console.log(typeof(c));
     return console.log(a+b);
 }
-
 hi(a,b);
+
+엥 이게 된다고?
