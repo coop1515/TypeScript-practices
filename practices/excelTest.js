@@ -1,3 +1,5 @@
+
+// ex1)
 // readFile(server단에서만 사용 가능)
 const reader = require('xlsx');
 const workbook = reader.readFile('./example.xlsx');
@@ -11,6 +13,8 @@ console.log(sheet)
 const data = reader.utils.sheet_to_json(sheet);
 console.log(data);
 
+
+// ex2)
 // read (client에서도 local xlsx불러올 때 fetch 사용.)
 // const reader = require('xlsx');
 //       const excel = async() => {
