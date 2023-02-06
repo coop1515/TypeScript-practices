@@ -15,7 +15,7 @@ console.log(data);
 
 
 // ex2)
-// read (client에서도 local xlsx불러올 때 fetch 사용.)
+// read (client에서 local xlsx불러올 때 fetch 사용.)
 // const reader = require('xlsx');
 //       const excel = async() => {
 //        const result = await fetch('/example.xlsx')
